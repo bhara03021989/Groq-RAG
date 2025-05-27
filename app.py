@@ -22,12 +22,12 @@ def vector_embeddings():
 
     if  os.path.exists(FAISS_INDEX_PATH):
         # load the existing FIASS index 
-        st.session_state.embeddings = OllamaEmbeddings(model="nomic-embed-text")
+        st.session_state.embeddings = OllamaEmbeddings()
         st.session_state.vectors = FAISS.load_local(FAISS_INDEX_PATH, st.session_state.embeddings , allow_dangerous_deserialization=True)
         st.write("FAISS index loaded from disk.")
     else:
 
-        st.session_state.embeddings = OllamaEmbeddings(model="nomic-embed-text")
+        st.session_state.embeddings = OllamaEmbeddings()
         st.session_state.loader = WebBaseLoader("https://docs.smith.langchain.com/") # loader
         st.session_state.docs = st.session_state.loader.load() # now we will load 
 
